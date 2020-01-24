@@ -28,10 +28,12 @@ class Answer(models.Model):
     answer_title = models.CharField(max_length=200)
     date_published = models.DateField(auto_now=True,)
 
-
+def get_image_filename(instance, filename):
+    id = instance.question.id
+    return 'post_pics/%s' % (id)
 
 class Image(models.Model):
     #id = models.AutoField(primary_key=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, null = True)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, null = True)
-    image = models.ImageField(upload_to='post_pics', null = True, blank=True)
+    image = models.ImageField(upload_to=get_image_filename, null = True, blank=True)
