@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<ul>
+    {%for object in objects%}
+
+        <li>{{object.question_title}}</li>
+    {%endfor%}
+</ul>
+{%endblock%}
