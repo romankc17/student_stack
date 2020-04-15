@@ -1,32 +1,42 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
-from django.utils.text import slugify
+from PIL import Image
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True, blank=True)
-    college_name = models.CharField(max_length=50)
-    SEMESTER = [
-        ('1', '1st'),
-        ('2', '2nd'),
-        ('3', '3rd'),
-        ('4', '4th'),
-        ('5', '5th'),
-        ('6', '6th'),
-        ('7', '7th'),
-        ('8', '8th')
-    ]
-    semester = models.CharField(max_length=1,choices=SEMESTER,)
-    profile_image = models.ImageField(upload_to = 'profile_pics', blank=True)
+	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+	city = models.CharField(max_length=50, blank=True)
+	college = models.CharField(max_length=100, blank=True)
+	contact = models.IntegerField(blank=True)
 
-    def save(self, *args, **kwargs):
-        self.slug=slugify(self.user.username)
-        super().save(*args, **kwargs)
+	SEMESTER_CHOICES = (
+		("1", "1"),
+		("2", "2"),
+		("3", "3"),
+		("4", "4"),
+		("5", "5"),
+		("6", "6"),
+		("7", "7"),
+		("8", "8"),
+	)
+	semester = models.CharField(
+		max_length=20,
+		choices=SEMESTER_CHOICES,
+		blank=True
+	)
 
-    def __str__(self):
-        return self.user.username
+	image = models.ImageField(default ='default.jpg', upload_to='profile_pics', )
+	#To use ImageField first we have to install Pillow (PIL)
 
-    def get_absolute_url(self):
-        return reverse('users:detail', kwargs={'the_slug':self.slug})
+	def __str__(self):
+		return f'{self.user.username} Profile'
+
+	def save(self, *args, **kwargs):
+		super(Profile, self).save(*args, **kwargs)
+
+		img = Image.open(self.image.path)
+
+		if img.height > 200 or img.width > 200:
+			output_size = (200, 200)
+			img.thumbnail(output_size)
+			img.save(self.image.path)   

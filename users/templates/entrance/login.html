@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{%block title%}login{%endblock%}
+{%block title%}Blog-login{%endblock%}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -15,7 +15,7 @@
     <div class='form-group'>
       <button class='btm btn-outline-info' type="submit">Login</button>
       <small class="text-muted ml-2">
-        <a href="#">Forget Password?</a>
+        <a href="{% url 'password_reset' %}">Forget Password?</a>
       </small>
     </div>
   </form>

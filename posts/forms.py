@@ -6,10 +6,11 @@ class QuestionCreateForm(forms.ModelForm):
 
     class Meta:
         model = Question
-        widgets = {'question_title':forms.Textarea(attrs={'rows': 2, 'cols': 15})}
-        fields=['question_sem','question_title']
+        widgets = {'title':forms.Textarea(attrs={'rows': 2, 'cols': 15})}
+        fields=['title',]
 
-class QuestionImageForm(forms.ModelForm):
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(label='Image')
     class Meta:
         model = Image
         fields=['image']

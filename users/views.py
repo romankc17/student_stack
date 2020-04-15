@@ -1,54 +1,56 @@
-from django.contrib import messages
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.views import generic
+from django.contrib.auth.decorators import login_required  #required signin to view profile 
+from django.contrib import messages #display some temporary message
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
-from . import forms, models
 
 
+#register page
 def register(request):
-    if request.method == "POST":
-        u_form = forms.UserCreateForm(request.POST)
-        p_form = forms.ProfileCreateForm(request.POST,  # request post data
-                                         request.FILES,  # request image file uploaded by users
-                                         )
+	if request.method == 'POST': #requested when submit is clicked
+		form = UserRegisterForm(request.POST) 
+		if form.is_valid(): #check if all data enter is valid
+			form.save()
+			username=form.cleaned_data.get('username')
+			messages.success(request, f'Your account has been created ')
+			#popup temporary message
 
-        if u_form.is_valid():
-            u_form.save()
-            username = u_form.cleaned_data.get('username')
+			return redirect('users:login')
+
+	else:
+		form = UserRegisterForm() # when we render register page
+	return render(request, 'entrance/register.html', {'form':form}) 
+    
+
+#profile page
+@login_required # (decorators) login required if not redirected to login page
+def profile(request):
+	if request.method=='POST':
+		u_form = UserUpdateForm(request.POST, instance = request.user) 
+		 #request post data and populate the form with updated user
+
+		p_form = ProfileUpdateForm(request.POST, #request post data
+								    request.FILES, #request image file uploaded by users
+								    instance = request.user.profile) # populate the form with updated profile
+
+		if u_form.is_valid() and p_form.is_valid():
+			u_form.save()
+			p_form.save()
+			messages.success(request, f'Your account has been updated!!')
+			#popup temporary message
+			return redirect('profile')
 
 
-            if p_form.is_valid():
-                college_name = p_form.cleaned_data.get('college_name')
-                semester = p_form.cleaned_data.get('semester')
-                profile_image = p_form.cleaned_data.get('profile_image')
-                p = models.Profile(user=User.objects.get(username=username),
-                                   college_name=college_name,
-                                   semester=semester,
-                                   profile_image=profile_image)
-                p.save()
+	else:
+		current_user = User.objects.get(username=request.user)
+		u_form = UserUpdateForm(instance = request.user) #populate the form with current user
+		p_form = ProfileUpdateForm(instance = request.user.profile) #populate the form with current profile
 
-                messages.success(request, f'Your account has been created!!')
-            # popup temporary message
 
-            return redirect('users:login')
+	context = {
+		'u_form': u_form,
+		'p_form': p_form
+	}
 
-    else:
-        u_form = forms.UserCreateForm()  # populate the form with current user
-        p_form = forms.ProfileCreateForm()  # populate the form with current profile
-
-    context = {
-        'u_form': u_form,
-        'p_form': p_form
-    }
-
-    return render(request, 'users/register.html', context)
-
-class ProfileDetailView(generic.DetailView):
-    model = models.Profile
-    slug_url_kwarg = 'the_slug'
-    slug_field = 'slug'
-    template_name = 'users/profile.html'
-
+	return render(request, 'entrance/profile.html', context)
