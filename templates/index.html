@@ -1,21 +1,51 @@
 {%extends 'base.html'%}
-
-{%block title%}index_page{%endblock%}
+{% load static %}
+{%block head%}
+  <title>home</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}">
+{%endblock%}
 
 {%block content%}
 
-    <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action active">
-        Choose the semester.
-      </a>
-      <a href="{%url 'posts:questions' question_sem='1'%}" class="list-group-item list-group-item-action">1st</a>
-      <a href="{%url 'posts:questions' question_sem='2'%}" class="list-group-item list-group-item-action">2nd</a>
-      <a href="{%url 'posts:questions' question_sem='3'%}" class="list-group-item list-group-item-action">3rd</a>
-      <a href="{%url 'posts:questions' question_sem='4'%}" class="list-group-item list-group-item-action">4th</a>
-      <a href="{%url 'posts:questions' question_sem='5'%}" class="list-group-item list-group-item-action">5th</a>
-      <a href="{%url 'posts:questions' question_sem='6'%}" class="list-group-item list-group-item-action">6th</a>
-      <a href="{%url 'posts:questions' question_sem='7'%}" class="list-group-item list-group-item-action">7th</a>
-      <a href="{%url 'posts:questions' question_sem='8'%}" class="list-group-item list-group-item-action">8th</a>
-    </div>
+  <div class="questions">
+       <div class="q-top">
+            <h2>Questions:</h2>
+            <a   class="ask-ques"  href="{% url 'question_create' %}">Ask Question </a>
+        </div>
+      <ul class='cate-list'>
+        {%for category in categories %}
+          <a href='#'> <li>{{category.faculty}}</li> </a>
+        {% endfor %}
+      </ul>
+        <hr style="background-color:white;">
+
+      <ul class='ques-list'>
+          {%for question in questions %}
+              <li>
+                  <a class='ques-box' href="{%url 'question_detail' question.slug %}">
+                      <div class="ques-vl" id="vote">{{question.upvotes.count}} votes</div>
+                      <div class="ques-vl" id='answer'>{{question.answer_set.count}} answers</div>
+                      <div class="ques-vl" id='asked-date'>{{question.created}}</div>
+                      <h4 class="ques">{{question.title|linebreaks}}</h4>
+                  </a>
+                   <div class="btm-sec">
+                       <div class="btm-sec-l">
+                          <a href='#'> {{question.category.faculty}}</a>
+                           {% if question.category.get_seasons_display != '' %}
+                          <a href="#">{{question.category.get_seasons_display}}:{{question.batch}}</a>
+                           {% endif %}
+                          <a href="#">{{question.subject.name}}</a>
+                      </div>
+                       <div class="btm-sec-r">
+                          asked by <a href="#" style="color: blue; font-size: large;">@{{question.user}}</a>
+                       </div>
+                   </div>
+               </li>
+            <hr style="background-color:white;">
+          {%endfor%}
+
+      </ul>
+  </div>
+
 
 {%endblock%}

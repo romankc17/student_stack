@@ -1,26 +1,44 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required  #required signin to view profile 
 from django.contrib import messages #display some temporary message
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-
-
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ProfileForm
 
 #register page
+from .models import Profile
+
+
 def register(request):
 	if request.method == 'POST': #requested when submit is clicked
-		form = UserRegisterForm(request.POST) 
-		if form.is_valid(): #check if all data enter is valid
-			form.save()
-			username=form.cleaned_data.get('username')
-			messages.success(request, f'Your account has been created ')
-			#popup temporary message
-
-			return redirect('users:login')
+		print('till')
+		u_form = UserRegisterForm(request.POST)
+		p_form = ProfileForm (request.POST)
+		if u_form.is_valid() and p_form.is_valid(): #check if all data enter is valid
+			u_form.save()
+			user_ = u_form.cleaned_data.get('username')
+			city = p_form.cleaned_data['city']
+			gender = p_form.cleaned_data['gender']
+			college = p_form.cleaned_data['college']
+			faculty = p_form.cleaned_data['faculty']
+			batch = p_form.cleaned_data['batch']
+			['city', 'college', 'faculty', 'batch', 'gender']
+			profile = Profile(user=User.objects.get(username=user_),city=city, gender=gender,college=college,faculty=faculty,batch=batch )
+			profile.save()
+			messages.success(request, "Account Successfully Created!!")
+			return redirect('login')
+		else:
+			print('not valid')
+			print(p_form.errors)
 
 	else:
-		form = UserRegisterForm() # when we render register page
-	return render(request, 'entrance/register.html', {'form':form}) 
+		u_form = UserRegisterForm()
+		p_form = ProfileForm()
+	context={
+		'u_form':u_form,
+		'p_form':p_form,
+	}
+	return render(request, 'entrance/register.html', context)
     
 
 #profile page
@@ -54,3 +72,13 @@ def profile(request):
 	}
 
 	return render(request, 'entrance/profile.html', context)
+
+
+
+@login_required
+def profile_view(request, username):
+	print('till')
+	context={
+		'profile': get_object_or_404 (Profile, user=User.objects.get(username=username))
+	}
+	return render(request, 'users/profile.html', context)

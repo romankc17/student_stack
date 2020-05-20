@@ -1,90 +1,114 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>{%block title%} lisc {%endblock%}</title>
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    {% block head %}
+
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+
 </head>
-<body>
+<body style="background-color: lightslategray;">
+    <div class="nav-wrapper">
+        <div class="left-side">
+            <div class="dropdown">
+                <img src="{%static 'drop-icon.png' %}" onclick="myFunction()" class="dropbtn icon-img">
+
+                <div id="myDropdown" class="dropdown-content">
+                    <a style="color:green;" href="{% url 'question_create' %}">Ask Question</a>
+                    <a href="{% url 'categories' %}">Faculties</a>
+                    {% if user.is_authenticated %}
+                        <a href="#">Your Questions</a>
+                        <a href="#">Your Answers</a>
+                        <a href="{%url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a href="{%url 'login' %}">Login</a>
+                        <a href="{%url 'register' %}">Register</a>
+                    {%endif%}
+                </div>
+            </div>
+            <a href='{%url "index" %}'>QnA</a>
+        </div>
+
+        <form class="middle-side">
+            <!-- <a href="#" class="my-ques">My Questions</a>
+            <a href="#" class="my-ans">My Answers</a> -->
+            <input class='search-box' type="text" placeholder="Search.." name="search">
+            <button  type="submit"><i class="search-btn fa fa-search"></i></button>
+        </form>
+        <a class="navask-ques" href="{% url 'question_create' %}">Ask Question </a>
+        <div class="right-side">
 
 
+                {% if user.is_authenticated %}
+                    <a class="profile" href="{% url 'profile' user %}">
+                        <img style=" height:  40px; width: auto;"  src='{{user.profile.image.url}}' class="profile-img" alt="PP">
+                    </a>
+                {% else %}
+                    <a class="profile" href="{% url 'login' %}">
+                        <img style=" height:  40px; width: auto;"  src='{% static "unknown.png" %}' class="profile-img" alt="PP">
+                    </a>
+                {%endif%}
+            <span class="tooltiptext">Tooltip text</span>
+        </div>
+    </div>
 
-<nav class="navbar mb-2  navbar-expand-lg navbar-light bg-dark">
-      <div class="container">
-    <div class="row pl-2"><a class="navbar-brand" style="color: blue; font-weight: bold;" href="{%url 'index'%}">NavBar</a></div>
-
-
-
-
-
-
-  <button
-  class="navbar-toggler"
-  type="button"
-  data-toggle="collapse"
-  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-  aria-label="Toggle navigation">
+    <div style="margin-top:55px">
 
 
-    <span class="navbar-toggler-icon"></span>
-  </button>
+        <div class="container">
+            {% if messages %}
+            {%for message in messages%}
+              <div style="margin-bottom:0px;" class="alert alert-{{message.tags}}">
+                {{message}}
+              </div>
+            {%endfor%}
+        {%endif%}
+            {% block content %} {% endblock %}
+         </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    {% block script %}  {%endblock%}
 
-
-
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" style="color: blue; font-weight: bold; " href="{%url 'index'%}">Home <span class="sr-only">(current)</span></a>
-      </li>
-
-
-
-      {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" style="color: white; font-weight: bold;" href="{%url 'users:logout'%}">Logout</a>
-      </li>
-
-
-      {% else %}
-
-      <li class="nav-item">
-        <a class="nav-link" style="color:white; font-weight: bold;" href="{%url 'users:login'%}">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" style="color:white; font-weight: bold;" href="{%url 'users:register'%}">Register</a>
-      </li>
-      {% endif %}
-
-
-
-    </ul>
-
-  </div>
-</div>
-</nav>
-
-  {% if messages %}
-    {%for message in messages%}
-      <div class="alert alert-{{message.tags}}">
-        {{message}}
-      </div>
-    {%endfor%}
-  {%endif%}
-
-  <div class='container'>
-
-   {%block content%} {%endblock%}
-
- </div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 </body>
 </html>

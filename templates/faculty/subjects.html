@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/faculty.css' %}">
+    <title>Subjects</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class='all-sub'>
+        <h1 style="text-align: center;">
+            Subjects({{subjects.first.category.faculty}})
+            {% if subjects.first.batch is not None %}
+                -{{subjects.first.category.get_seasons_display}}:{{subjects.first.batch}}
+            {% endif %}
+        </h1>
+        {% for subject in subjects %}
+            <a href="#">
+                <div class='each-sub'>
+                    {{subject.name}}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

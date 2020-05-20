@@ -40,7 +40,9 @@ INSTALLED_APPS = [
 
     'users',
     'crispy_forms',
-    'posts'
+    'widget_tweaks',
+    'posts',
+    'faculty',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +133,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' #forms designing
 LOGIN_REDIRECT_URL = 'index' #
-LOGIN_URL = 'user:login'          #redirected to login page when signup is completed
+LOGIN_URL = 'login'          #redirected to login page when signup is completed
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

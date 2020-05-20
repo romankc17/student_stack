@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Question,Answer,Image, Category, Batch
+from .models import Question,Answer,Image
 
-admin.site.register([Image, Category,Batch])
+admin.site.register([Image,])
 
 class AnswerInline(admin.StackedInline):
     model = Answer

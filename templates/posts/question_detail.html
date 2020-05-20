@@ -1,0 +1,188 @@
+{%extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{%block head %}
+    <title>Question_Answers</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'posts/image_modal.css' %}">
+<!--  <link rel="stylesheet" type="text/css" href="{% static 'posts/upvote.css' %}">-->
+    <style>
+        #id_title{
+            width:100%;
+        }
+    </style>
+{%endblock%}
+
+{%block content%}
+
+
+<div class="container">
+    Asked on
+    <button type="button" class="btn btn-light">{{question.created}}</button>
+    by
+    <a href="#" type="button" class="btn btn-light">{{question.user.first_name}} {{question.user.last_name}}</a>
+
+
+    {% if question.user == user %}
+       <div>
+        <a class = "btn btn-secondary btn-sm my-1" href="#">Edit</a>
+        <a class = "btn btn-danger btn-sm my-1" href="{% url 'question_delete' question.slug %}">Delete</a>
+       </div>
+    {% else %}
+        <div class="wrap">
+          <div class="votes">138</div>
+          <div class="button"><i class="fa fa-arrow-up"></i>Vote this up now</div>
+        </div>
+    {% endif %}
+    <hr>
+
+    <a href="#" type="button" class="btn btn-light">{{question.category}}</a>
+    {% if question.category.get_seasons_display != '' %}
+        <a href="#" type="button" class="btn btn-light">{{question.category.get_seasons_display}}:{{question.batch}}</a>
+    {% endif %}
+    <a href="#" type="button" class="btn btn-light">{{question.subject.name}}</a>
+    <hr style="padding:0; margin:0;">
+    <h3 >{{question.title}}</h3>
+
+
+<!--    Question Image-->
+
+    {% for image in question.image_set.all %}
+    <img class="myImg" id="myImg" src="{{image.image.url}}" alt="" style="width:100%;max-width:300px">
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div class="caption" id="caption"></div>
+    </div>
+    {% endfor %}
+
+    <hr style="background-color:white; height:2px;">
+
+    <h3 >
+        <a href="#id_title" style="background-color:lightyellow; color:black;">
+            {{question.answer_set.count}} Answer{{question.answer_set.count|pluralize}}:
+        </a>
+    </h3>
+        <hr style="background-color:white;">
+
+    <ul class='ques-list'>
+      {%for answer in question.answer_set.all %}
+        <li>
+              <div class='ques-box' href="#">
+                  <div class="ques-vl" id="vote">{{answer.upvotes.count}} votes</div>
+                  <div class="ques-vl" id='asked-date'>{{question.created}}</div>
+                  <div class="ques" >{{answer.title|linebreaks}}</div>
+              </div>
+
+
+<!--            Anwer Image-->
+            {% for image in answer.image_set.all %}
+
+                <img class="myImg" id="myImg{{image.id}}" src="{{image.image.url}}" alt="Answer" style="background:white; width:80%;max-width:200px">
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal{{image.id}}">
+                  <span class="close close{{image.id}}">&times;</span>
+                  <img class="modal-content" id="img{{image.id}}" >
+                  <div class="caption" id="caption{{image.id}}"></div>
+                </div>
+            {% endfor %}
+
+            <div class="btm-sec">
+
+            <div class="btm-sec-r" style="color: white; background-color:black; padding:2px;">
+            answered by <a href="{% url 'profile' answer.user %}" style="color: red; font-size: large;">{{answer.user.first_name}} {{answer.user.last_name}}</a>
+            </div>
+            </div>
+        </li>
+            <hr style="background-color:white;">
+      {%endfor%}
+    </ul>
+
+
+    <h3 style="color:white;">Your Answer:</h3>
+<!--                Answer form-->
+
+        <form method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="width:100%;">{{answer_form.title|attr:'placeholder:Write the answer....'}}</div>
+            <div style="font-weight: bold;"> <span style="background:yellow; padding:2px 4px">Upload image file</span>(optional)</div>
+            <div>
+                {{ formset.management_form }}
+                {%for form in formset %}
+                    {{form.image}}
+                {% endfor %}
+            </div>
+
+            <input style="margin:5px 0;" class="btn btn-lg btn-primary" type="submit" value="Post Your Answer">
+        </form>
+
+</div>
+
+
+{%endblock%}
+
+
+{%block script %}
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+
+
+
+ {% for answer in question.answer_set.all %}
+    {% for image in answer.image_set.all %}
+    <script>
+
+        // Get the modal
+        var modal = document.getElementById("myModal{{image.id}}");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("myImg{{image.id}}");
+        var modalImg = document.getElementById("img{{image.id}}");
+        var captionText = document.getElementById("caption{{image.id}}");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close{{image.id}}")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        </script>
+    {% endfor %}
+ {% endfor %}
+
+{% endblock %}
+

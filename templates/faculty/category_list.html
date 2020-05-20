@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'faculty/css/faculty.css' %}">
+    <title>Faculties</title>
+{% endblock %}
+
+{% block content %}
+    <div class="all-fac" style="margin-top:100px;">
+        {% for category in categories %}
+            <div class="each-fac">
+                <h1 class='fac-name{%if category.get_seasons_display != "" %} with-sess{%endif%}'>{{category.faculty}}</h1>
+                <div class='yors'>{{category.get_seasons_display}}</div>
+                <div class="sess-box">
+                    {%if category.get_seasons_display != "" %}
+                        {% for batch in category.batches.all %}
+                            <h1 class='each-sess'><a href="{% url 'subjects' category=category.slug batch=batch%}">
+                                {{batch}}
+                            </a></h1>
+                        {% endfor %}
+                    {% else %}
+                            <a class='no-sess' href="{% url 'subjects' category=category.slug batch='1'%}"></a>
+                    {%endif%}
+                </div>
+            </div>
+        {% endfor %}
+     </div>
+{% endblock %}
+
+

@@ -18,13 +18,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from django.views.generic import TemplateView
+from posts.views import home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/', include('users.urls')),
+    path('', home_page, name='index'),
+    path('user/', include('users.urls')),
     path('institute/', include('posts.urls')),
-    path('', TemplateView.as_view(template_name = 'index.html'), name = 'index'),
+    path('faculty/', include('faculty.urls')),
+
     path ('password-reset/',
      auth_views.PasswordResetView.as_view(template_name = 'entrance/password_reset.html'),
      name = 'password_reset'),
@@ -44,4 +46,7 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
