@@ -1,0 +1,9 @@
+asgiref==3.2.7
+decorator==4.4.2
+Django==3.0.6
+django-crispy-forms==1.9.1
+django-widget-tweaks==1.4.8
+Pillow==7.1.2
+public==2019.4.13
+pytz==2020.1
+sqlparse==0.3.1
