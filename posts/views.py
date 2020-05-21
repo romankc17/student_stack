@@ -15,13 +15,6 @@ from .models import Question, Image
 from posts.models import Answer
 from posts.forms import AnswerForm
 
-def question_view(request, question_sem):
-    try:
-        objects = Question.objects.filter(semester=question_sem)
-    except:
-        raise Http404
-    return render(request, 'posts/questions_list.html', {'objects':objects})
-
 def home_page(request):
     context={
         'questions':Question.objects.all().order_by('-created'),

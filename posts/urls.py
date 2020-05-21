@@ -5,7 +5,6 @@ from . import views,ajax
 
 
 urlpatterns=[
-    path('question/<slug:question_sem>/', views.question_view , name = 'questions'),
     path('question_create/', views.question_create_view, name='question_create'),
     path('question/<slug:slug>/update/', views.question_update_view, name='question_update'),
     path('question/<slug:slug>/detail/', views.question_answers, name='question_detail'),

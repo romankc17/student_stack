@@ -34,5 +34,5 @@ class Subject(models.Model):
         return f'{self.name}'
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(self.name+self.category+self.batch)
         super(Subject, self).save(*args, **kwargs)

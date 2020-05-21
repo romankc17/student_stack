@@ -1,0 +1,23 @@
+{%extends 'index.html' %}
+
+{%block part-title %}
+<!--    <div style="padding-top:15px; display:flex;  font-weight:bold;">-->
+<!--        <div style="margin:2px; background:black; padding:3px 4px;">{{questions.first.category}}</div>-->
+<!--        <div style="margin:2px; background:black; padding:3px 4px;">{{questions.first.batch}}</div>-->
+<!--        <div style="margin:2px; background:black; padding:3px 4px;">{{questions.first.subject}}</div>-->
+<!--    </div>-->
+    <div style="padding-top:15px; font-weight:bold;" class="btm-sec">
+       <div class="btm-sec-l">
+          <a href="{%url 'part_questions' category.slug %}"> {{category}}</a>
+           {% if batch %}
+               {% if questions.first.category.get_seasons_display != '' %}
+              <a href="#">{{category.get_seasons_display}}:{{batch}}</a>
+               {% endif %}
+           {%endif%}
+
+           {%if subject %}
+            <a href="#">{{subject}}</a>
+           {%endif%}
+      </div>
+   </div>
+{%endblock%}
