@@ -3,6 +3,44 @@
 
 {% load widget_tweaks %}
 
+
+{% block head %}
+    <style>
+
+        #id_title{
+            width:100%;
+            height:230px;
+        }
+
+        #ques-create-form{
+            padding: 30px 20px;
+
+        }
+
+        .cate {
+            text-align:center;
+            display:flex;
+         }
+
+         .cate #cate-{
+            padding:12px;
+            }
+
+        @media only screen and (max-width:600px) {
+            .cate {
+
+            display:block;
+         }
+         }
+}
+
+
+    </style>
+
+{% endblock %}
+
+
+
 {%block script %}
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -47,7 +85,7 @@
 {%endblock%}
 
 {%block content%}
-    <form style="color:white;" id="ques-create-form" method="POST" enctype="multipart/form-data" novalidate >
+    <form  id="ques-create-form" method="POST" enctype="multipart/form-data" novalidate >
         {%csrf_token%}
         <div class="cate">
             <div class="cate-fac" id="cate-">
@@ -75,6 +113,7 @@
             <div style="display:flex; "> <h3>Image</h3><span style="padding-top:7px; color:green;">(optional)</span></div>
             {{ formset.management_form }}
             {% for form in formset %}
+                {{form.id}}
                 <div>{{form.image}}</div>
             {% endfor %}
         </div>
@@ -95,32 +134,5 @@
 {%endblock%}
 
 
-{% block head %}
-    <style>
 
-        #ques-create-form{
-            padding: 30px 20px;
-
-        }
-
-        .cate {
-            text-align:center;
-            display:flex;
-         }
-
-         .cate #cate-{
-            padding:12px;
-            }
-
-        @media only screen and (max-width:600px) {
-            .cate {
-
-            display:block;
-         }
-         }
-}
-
-    </style>
-
-{% endblock %}
 

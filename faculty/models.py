@@ -31,7 +31,7 @@ class Subject(models.Model):
     batch = models.ForeignKey(Batch, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.name}({self.category}-{self.batch})'
+        return f'{self.name}'
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

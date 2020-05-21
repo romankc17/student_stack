@@ -1,4 +1,4 @@
-{%extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
 
@@ -6,11 +6,21 @@
     <title>Question_Answers</title>
   <link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'posts/image_modal.css' %}">
-<!--  <link rel="stylesheet" type="text/css" href="{% static 'posts/upvote.css' %}">-->
+  <link rel="stylesheet" type="text/css" href="{% static 'posts/upvote.css' %}">
     <style>
         #id_title{
             width:100%;
+            border-radius:10px;
         }
+
+        #edit, #delete{
+            flex-direction:row-reverse;
+        }
+
+        .edright a{
+            margin:0 2px;
+        }
+
     </style>
 {%endblock%}
 
@@ -18,55 +28,53 @@
 
 
 <div class="container">
-    Asked on
-    <button type="button" class="btn btn-light">{{question.created}}</button>
-    by
-    <a href="#" type="button" class="btn btn-light">{{question.user.first_name}} {{question.user.last_name}}</a>
+    <div style="width:100%; background-color:#FFA07A; padding:3px 10px;"  class="container-fluid">
+        <h3 style="padding-left:3%; background:yellow;">Question:</h3>
+        Asked on
+        <button type="button" class="btn btn-light">{{question.created}}</button>
+        by
+        <a href="#" type="button" class="btn btn-light">{{question.user.first_name}} {{question.user.last_name}}</a>
 
 
-    {% if question.user == user %}
-       <div>
-        <a class = "btn btn-secondary btn-sm my-1" href="#">Edit</a>
-        <a class = "btn btn-danger btn-sm my-1" href="{% url 'question_delete' question.slug %}">Delete</a>
-       </div>
-    {% else %}
-        <div class="wrap">
-          <div class="votes">138</div>
-          <div class="button"><i class="fa fa-arrow-up"></i>Vote this up now</div>
+        {% if question.user == user %}
+           <div>
+            <a class = "btn btn-secondary btn-sm my-1" href="{%url 'question_update' question.slug %}">Edit</a>
+            <a class = "btn btn-danger btn-sm my-1" href="{% url 'question_delete' question.slug %}">Delete</a>
+           </div>
+        {% endif %}
+        <hr>
+
+        <a href="#" type="button" class="btn btn-light">{{question.category}}</a>
+        {% if question.category.get_seasons_display != '' %}
+            <a href="#" type="button" class="btn btn-light">{{question.category.get_seasons_display}}:{{question.batch}}</a>
+        {% endif %}
+        <a href="#" type="button" class="btn btn-light">{{question.subject.name}}</a>
+        <hr style="padding:0; margin:0;">
+        <h3 >{{question.title}}</h3>
+
+
+    <!--    Question Image-->
+
+        {% for image in question.image_set.all %}
+        <img class="myImg" id="myImg" src="{{image.image.url}}" alt="" style="width:100%;max-width:300px">
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01">
+          <div class="caption" id="caption"></div>
         </div>
-    {% endif %}
-    <hr>
-
-    <a href="#" type="button" class="btn btn-light">{{question.category}}</a>
-    {% if question.category.get_seasons_display != '' %}
-        <a href="#" type="button" class="btn btn-light">{{question.category.get_seasons_display}}:{{question.batch}}</a>
-    {% endif %}
-    <a href="#" type="button" class="btn btn-light">{{question.subject.name}}</a>
-    <hr style="padding:0; margin:0;">
-    <h3 >{{question.title}}</h3>
-
-
-<!--    Question Image-->
-
-    {% for image in question.image_set.all %}
-    <img class="myImg" id="myImg" src="{{image.image.url}}" alt="" style="width:100%;max-width:300px">
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="img01">
-      <div class="caption" id="caption"></div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
-    <hr style="background-color:white; height:2px;">
+    <hr style="background-color:yellow; height:2px;">
 
     <h3 >
-        <a href="#id_title" style="background-color:lightyellow; color:black;">
+        <a href="#id_title" style="background-color:yellow; color:black;">
             {{question.answer_set.count}} Answer{{question.answer_set.count|pluralize}}:
         </a>
     </h3>
-        <hr style="background-color:white;">
+        <hr style="background-color:yellow; height:2px;">
 
     <ul class='ques-list'>
       {%for answer in question.answer_set.all %}
@@ -74,6 +82,14 @@
               <div class='ques-box' href="#">
                   <div class="ques-vl" id="vote">{{answer.upvotes.count}} votes</div>
                   <div class="ques-vl" id='asked-date'>{{question.created}}</div>
+                  {%if request.user == answer.user %}
+                      <div style="display:flex; flex-direction: row-reverse;" class="edright ques-vl">
+
+                          <a href="{%url 'answer_delete' answer.id %}" class=" btn btn-danger" id='delete'>Delete</a>
+                          <a href="{%url 'answer_update' answer.id %}" class=" btn btn-primary" id='edit'>Edit</a>
+
+                      </div>
+                  {%endif%}
                   <div class="ques" >{{answer.title|linebreaks}}</div>
               </div>
 
@@ -98,28 +114,32 @@
             </div>
             </div>
         </li>
-            <hr style="background-color:white;">
+            <hr style="background-color:white; height:7px;">
       {%endfor%}
     </ul>
 
+    <div style="background-color:lightgreen; border: 2px solid ; border-radius:15px; margin-bottom:20px; padding:10px;">
+        <h3>Your Answer:</h3>
+    <!--                Answer form-->
 
-    <h3 style="color:white;">Your Answer:</h3>
-<!--                Answer form-->
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style="position; width:90%;  border-radius: 7px;">{{answer_form.title|attr:'placeholder:Write the answer....'}}</div>
+                <div style="font-weight: bold;"> <span style="background:yellow; padding:2px 4px">Upload image file</span>(optional)</div>
+                <div>
+                    {{ formset.management_form }}
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
 
-        <form method='POST' enctype="multipart/form-data">
-            {% csrf_token %}
-            <div style="width:100%;">{{answer_form.title|attr:'placeholder:Write the answer....'}}</div>
-            <div style="font-weight: bold;"> <span style="background:yellow; padding:2px 4px">Upload image file</span>(optional)</div>
-            <div>
-                {{ formset.management_form }}
-                {%for form in formset %}
-                    {{form.image}}
-                {% endfor %}
-            </div>
+                    {%for form in formset %}
+                        {{form.image}}
+                    {% endfor %}
+                </div>
 
-            <input style="margin:5px 0;" class="btn btn-lg btn-primary" type="submit" value="Post Your Answer">
-        </form>
-
+                <input style="margin:5px 0;" class="btn btn-lg btn-primary" type="submit" value="Post Your Answer">
+            </form>
+    </div>
 </div>
 
 

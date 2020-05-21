@@ -4,6 +4,7 @@ import string
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 from faculty.models import Category,Batch,Subject
 
@@ -40,6 +41,9 @@ class Question(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('question_detail', kwargs = {'slug':self.slug})
 
 
 class Answer(models.Model):

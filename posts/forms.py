@@ -23,7 +23,7 @@ class QuestionCreateForm(forms.ModelForm):
             except (ValueError, TypeError):
                 pass  # invalid input from the client; ignore and fallback to empty City queryset
         elif self.instance.pk:
-            self.fields['batch'].queryset = self.instance.category.batch_set.all()
+            self.fields['batch'].queryset = self.instance.category.batches.all()
 
         if 'batch' in self.data:
             try:
@@ -37,7 +37,7 @@ class QuestionCreateForm(forms.ModelForm):
 
 
 class ImageForm(forms.ModelForm):
-    image = forms.ImageField(label='Image')
+    image = forms.FileField(required=False)
 
     class Meta:
         model = Image
@@ -45,12 +45,10 @@ class ImageForm(forms.ModelForm):
 
     image.widget.attrs["value"] = 'Upload'
 
-
-
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
-        widgets = {'title': forms.Textarea(attrs={'rows': 3, })}
+        widgets = {'title': forms.Textarea(attrs={'rows': 7, })}
         fields = ['title']
 
 
