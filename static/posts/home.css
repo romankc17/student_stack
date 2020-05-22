@@ -1,10 +1,3 @@
-.questions{
-    color:white;
-    margin-left:2%;
-    margin-right: 2%;
-
-}
-
 
 a{
      text-decoration: none;
@@ -129,24 +122,31 @@ a{
 
 
 
+
 @media only screen and (min-width: 650px) {
   .questions {
-    margin: 2px 20%;
+    margin: 2px 0%;
     margin-right: 2px;
   }
    .ask-ques{
         right:4%;
-}
 
 }
 
-@media only screen and (min-width: 980px) {
+}
+
+
+
+
+@media only screen and (max-width: 120px) {
   .questions {
-    margin: 2px 20%;
-    margin-right: 5px;
+    margin: 2px 120px;
+    margin-right: 2px;
+    background:green;
+
   }
-    .ask-ques{
-        display: none;
-    }
+   .ask-ques{
+        right:4%;
+        padding:10px;
 }
 

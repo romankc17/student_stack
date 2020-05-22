@@ -1,6 +1,10 @@
+import os
+
 from django.db import models
 from django.contrib.auth.models import User
-from PIL import Image
+from PIL import Image, ExifTags
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from faculty.models import Category,Batch
 
 
@@ -19,14 +23,38 @@ class Profile(models.Model):
 	def __str__(self):
 		return f'{self.user.username} Profile'
 
-	# def save(self, *args, **kwargs):
-	# 	super(Profile, self).save(*args, **kwargs)
-	#
-	#
-	#
-	# 	img = Image.open(self.image.path)
-	#
-	# 	if img.height > 200 or img.width > 200:
-	# 		output_size = (200, 200)
-	# 		img.thumbnail(output_size)
-	# 		img.save(self.image.path)
+	def save(self, *args, **kwargs):
+		super(Profile, self).save(*args, **kwargs)
+		img = Image.open(self.image.path)
+
+		if img.height > 1500 or img.width > 1024:
+			output_size = (1500,1024)
+			img.thumbnail(output_size)
+			img.save(self.image.path)
+
+def rotate_image(filepath):
+    try:
+        image = Image.open(filepath)
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation] == 'Orientation':
+                break
+        exif = dict(image._getexif().items())
+
+        if exif[orientation] == 3:
+            image = image.rotate(180, expand=True)
+        elif exif[orientation] == 6:
+            image = image.rotate(270, expand=True)
+        elif exif[orientation] == 8:
+            image = image.rotate(90, expand=True)
+        image.save(filepath)
+        image.close()
+    except (AttributeError, KeyError, IndexError):
+        # cases: image don't have getexif
+        pass
+
+@receiver(post_save, sender=Image, dispatch_uid="update_image_profile")
+def update_image(sender, instance, **kwargs):
+  if instance.image:
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    fullpath = BASE_DIR + instance.image.url
+    rotate_image(fullpath)

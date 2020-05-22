@@ -29,7 +29,8 @@ def question_create_view(request):
                                         extra=1)
     if request.method == 'POST':
         qform = QuestionCreateForm(request.POST)
-        formset = ImageFormSet(request.POST, request.FILES,)
+        formset = ImageFormSet(request.POST, request.FILES,
+                               queryset=Image.objects.none())
         if qform.is_valid() and formset.is_valid():
             qform = qform.save(commit=False)
             qform.user = request.user
@@ -159,7 +160,7 @@ def question_update_view(request, slug):
                     #to delete image
                     elif form.cleaned_data['image'] is False:
                         photo = Image.objects.get(id=request.POST.get('form-' + str(index) + '-id'))
-                        photo.delete(save=False)
+                        photo.delete()
 
                     # to update existing image
                     else:
