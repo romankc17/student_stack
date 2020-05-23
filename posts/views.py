@@ -188,7 +188,7 @@ def question_update_view(request, slug):
 def answer_update(request, pk):
     ImageFormSet = modelformset_factory(Image,
                                         fields=('image',),
-                                        max_num=3)
+                                        extra=3,max_num=3)
     answer = Answer.objects.get(id=pk)
     question = answer.question
 

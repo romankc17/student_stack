@@ -4,9 +4,13 @@ from django.utils.text import slugify
 
 class Batch(models.Model):
     batch = models.CharField(max_length=1,blank=True)
-
+    slug = models.SlugField(blank=True, null=True)
     def __str__(self):
         return (self.batch)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.batch)
+        super(Batch, self).save(*args, **kwargs)
 
 class Category(models.Model):
     faculty = models.CharField(max_length=50, blank=True)
@@ -34,5 +38,5 @@ class Subject(models.Model):
         return f'{self.name}'
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name+self.category+self.batch)
+        self.slug = slugify(f'{self.name} {self.category.faculty} {self.batch.batch}')
         super(Subject, self).save(*args, **kwargs)

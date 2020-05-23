@@ -1,5 +1,6 @@
+from django.db.models import Q
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 
 from .models import Category,Batch,Subject
@@ -15,13 +16,19 @@ def subjects_view(request, category, batch):
     context={'subjects':subjects}
     return render(request, 'faculty/subjects.html', context)
 
-def particular_questions(request, slug):
+def part_cate_or_sub_ques(request, slug):
     try:
         try:
             category = Category.objects.get(slug=slug)
             print(category)
             questions = Question.objects.filter(category=category)
-            context = {'questions': questions,
+            if category.get_seasons_display != '':
+                batch_subjects = Subject.objects.filter(Q(category=category), Q(batch=Batch.objects.get(slug=1)))
+                context = {'questions': questions,
+                           'category': category,
+                           'batch_subjects':batch_subjects}
+            else:
+                context = {'questions': questions,
                        'category':category}
         except :
             print('till')
@@ -36,5 +43,22 @@ def particular_questions(request, slug):
         raise Http404()
 
 
+
+    return render(request, 'faculty/part-questions.html', context)
+
+
+
+
+def part_batch_ques(request, cate_slug, batch_slug):
+    category = get_object_or_404(Category, slug=cate_slug)
+    batch = get_object_or_404(Batch, slug=batch_slug)
+    questions = Question.objects.filter(Q(category=category), Q(batch=batch))
+    batch_subjects = Subject.objects.filter(Q(category=category),Q(batch=batch))
+    context = {
+        'questions':questions,
+        'category':category,
+        'batch':batch,
+        'batch_subjects':batch_subjects
+    }
 
     return render(request, 'faculty/part-questions.html', context)

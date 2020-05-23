@@ -1,9 +1,11 @@
-
+.questions{
+    margin:4px;
+}
 a{
      text-decoration: none;
-
     color:white;
     }
+
 
 .q-top{
     display:flex;
@@ -13,7 +15,7 @@ a{
 
 
  .ask-ques{
-      padding: 10px 70px;
+      padding: 10px 50px;
     margin-right:5px;
     margin-top:15px;
     margin-bottom:10px;
@@ -56,6 +58,8 @@ a{
 
 }
 
+
+
 .cate-list li:hover{
     color: black;
     background-color: white;
@@ -83,6 +87,8 @@ a{
 .ques-list .ques-vl{
     display:inline;
     padding: 2px 7px;
+    color:black;
+    border-style:groove;
 }
 
 .ques-list{

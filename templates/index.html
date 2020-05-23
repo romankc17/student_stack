@@ -2,6 +2,7 @@
 {% load static %}
 {%block head%}
   <title>home</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}">
   <style>
       @media only screen and (min-width: 600px) {
@@ -18,13 +19,17 @@
       {%block part-title %}  {%endblock%}
        <div class="q-top">
 
-            <h2 style="color:blue;">Questions:</h2>
-            <a   class="ask-ques"  href="{% url 'question_create' %}">Ask Question </a>
+<!--            <h2 style="color:blue;">Questions:</h2>-->
+<!--            <a   class="ask-ques"  href="{% url 'question_create' %}">Ask Question </a>-->
         </div>
       <ul class='cate-list'>
-        {%for category in categories %}
-          <a href="{%url 'part_questions' category.slug %}"> <li>{{category.faculty}}</li> </a>
-        {% endfor %}
+        {%block ls %}
+
+            {%for category in categories %}
+              <a href="{%url 'part_questions' category.slug %}"> <li>{{category.faculty}}</li> </a>
+            {% endfor %}
+
+          {%endblock%}
       </ul>
         <hr style="background-color:white;">
 
@@ -35,18 +40,30 @@
                       <div class="ques-vl" id="vote">{{question.upvotes.count}} votes</div>
                       <div class="ques-vl" id='answer'>{{question.answer_set.count}} answers</div>
                       <div class="ques-vl" id='asked-date'>{{question.created}}</div>
-                      <h4 style="color:black;" class="ques">{{question.title|linebreaks}}</h4>
+                      <div style="color:black; font-weight:bold; margin-bottom:0; padding-bottom:0;" class="ques">{{question.title|linebreaks}}</div>
+                      {% if question.image_set.all.count > 0 %}
+                      <button style="margin-top:0;background:lightblue;font-size:15px">Image <i class="material-icons" style="color:blue;">filter</i></button>
+                      {% endif %}
                   </a>
                    <div class="btm-sec">
                        <div class="btm-sec-l">
-                          <a href="{%url 'part_questions' question.category.slug %}"> {{question.category.faculty}}</a>
+                          <a  href="{%url 'part_questions' question.category.slug %}"> {{question.category.faculty}}</a>
                            {% if question.category.get_seasons_display != '' %}
-                          <a href="#">{{question.category.get_seasons_display}}:{{question.batch}}</a>
+                          <a  href="{%url 'part_batch_ques' cate_slug=question.category.slug batch_slug=question.batch.slug %}">
+                              {{question.category.get_seasons_display}}:{{question.batch}}
+                          </a>
                            {% endif %}
                           <a href="{%url 'part_questions' question.subject.slug %}">{{question.subject.name}}</a>
                       </div>
                        <div class="btm-sec-r">
-                          asked by <a href="#" style="color: blue; font-size: large;">@{{question.user}}</a>
+<!--                           <img class = 'rounded-circle' style="height: 65px;  width: 65px;  margin-right: 16px;"-->
+<!--                                 src="{{ question.user.profile.image.url }}">-->
+                            <a href="{% url 'profile' question.user %}">
+                                <img style="text-align:center;height:40px;display:block;width:auto;" src='{{question.user.profile.image.url}}' class="profile-img" alt="PP">
+                                <div style="text-align:center;color:black;dispaly:block;font-weight:bold;">
+                                    {{question.user.first_name}} {{question.user.last_name}}
+                                </div>
+                            </a>
                        </div>
                    </div>
                </li>

@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
      <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -18,14 +21,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
 
 </head>
-<body style="background-color: lightblue;">
-    <div class="nav-wrapper">
+<body id="main-body" style="background-color: lightyellow;">
+    <div class="nav-wrapper" style="color:black; background:lightblue;">
         <div class="left-side">
-            <div class="dropdown">
-                <img src="{%static 'drop-icon.png' %}" onclick="myFunction()" class="dropbtn icon-img">
+            <div style="margin-top:3px; background:lightblue; " class="dropdown">
+                <img style="background:lightblue; font-size:20px;" src="{%static 'drop-icon.png' %}" onclick="myFunction()" class="dropbtn icon-img">
 
                 <div id="myDropdown" class="dropdown-content">
                     <a style="color:green;" href="{% url 'question_create' %}">Ask Question</a>
+
                     <a href="{% url 'categories' %}">Faculties</a>
                     {% if user.is_authenticated %}
                         <a href="#">Your Questions</a>
@@ -37,16 +41,22 @@
                     {%endif%}
                 </div>
             </div>
-            <a href='{%url "index" %}'>QnA</a>
+            <a style="margin-top:2px; margin-left:4px; color:black; font-weight:bold; font-size:20px;" href='{%url "index" %}'>QnA</a>
+<!--            <a href="#" class="home-btn"><i class="fa fa-home"></i> </a>-->
         </div>
 
         <form class="middle-side">
             <!-- <a href="#" class="my-ques">My Questions</a>
             <a href="#" class="my-ans">My Answers</a> -->
-            <input class='search-box' type="text" placeholder="Search.." name="search">
-            <button  type="submit"><i class="search-btn fa fa-search"></i></button>
+            <input style="background:lightyellow; border-style:groove; " class='search-box' type="text" placeholder="Search.." name="search">
+            <button style=" background:blue; border:20px soid red;"  type="submit">
+                <i style="color:black;" class="search-btn fa fa-search"></i>
+            </button>
         </form>
-        <a class="navask-ques" href="{% url 'question_create' %}">Ask Question </a>
+        <a class="navask-ques" href="{% url 'question_create' %}">
+            <div style="margin-top:2.5px;">Ask</div>
+        </a>
+
         <div class="right-side">
 
 
@@ -63,17 +73,17 @@
         </div>
     </div>
 
-    <div style="margin-top:55px">
+    <div style="margin-top:60px">
 
 
         <div >
             {% if messages %}
-            {%for message in messages%}
-              <div style="margin-bottom:0px;" class="alert alert-{{message.tags}}">
-                {{message}}
-              </div>
-            {%endfor%}
-        {%endif%}
+                {%for message in messages%}
+                  <div style="margin-bottom:0px;" class="alert alert-{{message.tags}}">
+                    {{message}}
+                  </div>
+                {%endfor%}
+             {%endif%}
             {% block content %} {% endblock %}
          </div>
     </div>

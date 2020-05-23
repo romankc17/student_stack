@@ -4,9 +4,9 @@
 
 {%block head %}
     <title>Question_Answers</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'posts/image_modal.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'posts/upvote.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/image_modal.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/upvote.css' %}">
     <style>
         #id_title{
             width:100%;
@@ -40,30 +40,24 @@
 
 <div class="qd-body">
     <div style=" margin:2px;">
-        <h3 style="border-radius:10px; text-align:center; background:white; color:red;">Question:</h3>
-
-
-        {% if question.user == user %}
-           <div>
-            <a class = "btn btn-secondary btn-sm my-1" href="{%url 'question_update' question.slug %}">Edit</a>
-            <a class = "btn btn-danger btn-sm my-1" href="{% url 'question_delete' question.slug %}">Delete</a>
-           </div>
-        {% endif %}
         <div>
             <button style=" margin:2px;" type="button" class="btn btn-light">{{question.created}}</button>
-            <a style="background:black; color:red; margin:2px;" href="#" type="button" class="btn btn-light">
-                {{question.user.first_name}} {{question.user.last_name}}
-            </a>
         </div>
-        <hr style="padding:0; margin:0;">
+        <hr style="padding:0; margin:0; ">
 
-        <h3 >{{question.title}}</h3>
+        <h5 >{{question.title}}</h5>
+        {%if question.user == request.user %}
+            <div style="color:blue'">
+                <a style="color:blue; padding:3px;" href="{%url 'question_update' question.slug %}" ><u>Edit</u></a>
+                <a style="color:red; text-style:underline; padding:3px;" href="{%url 'question_delete' question.slug %}"><u>Delete</u></a>
+            </div>
+        {%endif%}
 
 
     <!--    Question Image-->
 
         {% for image in question.image_set.all %}
-            <img class="myImg" id="myImg" src="{{image.image.url}}" alt="" style="width:100%;max-width:300px">
+            <img class="myImg" id="myImg" src="{{image.image.url}}" alt="" style="width:60%;max-width:200px">
             <!-- The Modal -->
             <div id="myModal" class="modal">
               <span class="close">&times;</span>
@@ -71,47 +65,54 @@
               <div class="caption" id="caption"></div>
             </div>
         {% endfor %}
+    </div>
 
-
+    <div class="btm-sec">
+        <div class="btm-sec-l">
+          <a  href="{%url 'part_questions' question.category.slug %}"> {{question.category.faculty}}</a>
+           {% if question.category.get_seasons_display != '' %}
+          <a  href="{%url 'part_batch_ques' cate_slug=question.category.slug batch_slug=question.batch.slug %}">
+              {{question.category.get_seasons_display}}:{{question.batch}}
+          </a>
+           {% endif %}
+          <a href="{%url 'part_questions' question.subject.slug %}">{{question.subject.name}}</a>
+        </div>
+        <div class="btm-sec-r">
+            <a href="{% url 'profile' question.user %}">
+                <img style="text-align:center;height:40px;display:block;width:auto;" src='{{question.user.profile.image.url}}' class="profile-img" alt="PP">
+                <div style="text-align:center;color:black;dispaly:block;font-weight:bold;">
+                    {{question.user.first_name}} {{question.user.last_name}}
+                </div>
+            </a>
+        </div>
     </div>
 
 
-    <div style="margin-top:2px; margin-bottom:0;">
-        <a style=" margin-bottom:2px;" href="#" type="button" class="btn btn-light">{{question.category}}</a>
-        {% if question.category.get_seasons_display != '' %}
-            <a style=" margin-bottom:2px;" href="#" type="button" class="btn btn-light">{{question.category.get_seasons_display}}:{{question.batch}}</a>
-        {% endif %}
-        <a style=" margin-bottom:2px;" href="#" type="button" class="btn btn-light">{{question.subject.name}}</a>
-    </div>
     <h3 style="margin-top:10px;  ">
-        <a href="#id_title" style="border-radius:7px; padding:4px; background-color:yellow; color:black;">
+        <a href="#id_title" style="border-radius:7px; padding:4px; background-color:lightgreen; color:blue;">
             {{question.answer_set.count}} Answer{{question.answer_set.count|pluralize}}:
         </a>
     </h3>
-        <hr style="height:7px; background-color:white;">
+        <hr style="height:7px; ">
 
 
 <!--    Answer LIst-->
 
-    <ul style="padding:10px;" class='ques-list'>
+    <ul style=" padding:10px;" class='ques-list'>
       {%for answer in question.answer_set.all %}
-        <li style="padding:10px;">
+        <li style="padding:10px; border:0; background:#F3FFFF; border-radius:10px; margin-bottom:7px;">
               <div class='ques-box' href="#">
 <!--                  <div class="ques-vl" id="vote">{{answer.upvotes.count}} votes</div>-->
                   <div class="btn btn-small" id='asked-date'>{{question.created}}</div>
-                  <a class="btn" href="{% url 'profile' answer.user %}" style="color: red; background:black; font-wieght: bold;">{{answer.user.first_name}} {{answer.user.last_name}}</a>
-                  {%if request.user == answer.user %}
-                      <div style="display:flex; flex-direction: row-reverse;" class="edright ques-vl">
-
-                          <a href="{%url 'answer_delete' answer.id %}" class=" btn btn-danger" id='delete'>Delete</a>
-                          <a href="{%url 'answer_update' answer.id %}" class=" btn btn-primary" id='edit'>Edit</a>
-
-                      </div>
-                  {%endif%}
-                  <div class="ques" style="width:100%" >{{answer.title|linebreaks}}</div>
+                  <div class="ques" style="font-weight:bold;" >{{answer.title|linebreaks}}</div>
               </div>
 
-
+            {%if request.user == answer.user %}
+                <div style="color:blue; margin-bottom:10px;">
+                    <a style="color:blue; padding:3px;" href="{%url 'answer_update' answer.id %}" ><u>Edit</u></a>
+                    <a style="color:red; text-style:underline; padding:3px;" href="{%url 'answer_delete' answer.id %}"><u>Delete</u></a>
+                </div>
+            {%endif%}
 <!--            Anwer Image-->
             {% for image in answer.image_set.all %}
 
@@ -129,8 +130,27 @@
 
 
             </div>
+
+
+            <div class="btm-sec">
+                <div style="" class="btm-sec-l">
+
+                </div>
+                <div class="btm-sec-r">
+                    <a href="{% url 'profile' question.user %}">
+                        <img style="text-align:center;height:40px;display:block;width:auto;" src='{{answer.user.profile.image.url}}' class="profile-img" alt="PP">
+                        <div style="text-align:center;color:black;dispaly:block;font-weight:bold;">
+                            {{answer.user.first_name}} {{answer.user.last_name}}
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+
+
         </li>
-            <hr style="margin:3px; background-color:white; height:7px;">
+<!--            <hr style="margin:3px; background-color:white; height:7px;">-->
       {%endfor%}
     </ul>
 

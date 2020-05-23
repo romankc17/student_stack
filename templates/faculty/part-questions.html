@@ -10,8 +10,8 @@
        <div class="btm-sec-l">
           <a href="{%url 'part_questions' category.slug %}"> {{category}}</a>
            {% if batch %}
-               {% if questions.first.category.get_seasons_display != '' %}
-              <a href="#">{{category.get_seasons_display}}:{{batch}}</a>
+               {% if category.get_seasons_display != '' %}
+                    <a href="#">{{category.get_seasons_display}}:{{batch}}</a>
                {% endif %}
            {%endif%}
 
@@ -20,4 +20,29 @@
            {%endif%}
       </div>
    </div>
+{%endblock%}
+
+{%block ls %}
+
+    {%if subject %}
+
+    {%elif batch %}
+        {%for subject in batch_subjects %}
+            <a href="{%url 'part_questions' subject.slug %}">
+                <li>{{subject}}</li>
+            </a>
+        {% endfor %}
+
+    {%else %}
+        {% if category.get_seasons_display != '' %}
+            {%for subject in batch_subjects %}
+                <a href="{%url 'part_questions' subject.slug %}"> <li>{{subject}}</li> </a>
+            {% endfor %}
+        {% else %}
+            {% for batch in category.batch_set.all %}
+                <a href="{%url 'part_batch_ques' cate_slug=category.slug batch_slug=batch.slug %}"> <li>{{batch}}</li> </a>
+            {% endfor %}
+        {% endif %}
+
+    {% endif %}
 {%endblock%}
