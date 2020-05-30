@@ -5,23 +5,50 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}">
   <style>
-      @media only screen and (min-width: 600px) {
+      .indexask-ques{
+            text-decoration:none;
+            display:none;
+            font-weight:bold;
+            border-radius:10px;
+            background-color: #0275d8;
+            padding: 5px 30px;
+            text-align: center;
+            margin-top:5px;
+      }
+
+      .indexask-ques:hover{
+        background:black;
+      }
+
+
+
+      @media only screen and (min-width: 550px) {
           .questions {
             margin: 2px 15%;
           }
+          .cate-list{
+            margin-top:3px;
         }
+        }
+
+         @media only screen and (max-width:550px) {
+        .indexask-ques{
+            display:block;
+        }
+
   </style>
 {%endblock%}
 
 {%block content%}
 
   <div class="questions">
-      {%block part-title %}  {%endblock%}
+
        <div class="q-top">
 
-<!--            <h2 style="color:blue;">Questions:</h2>-->
+            <a style="color:white" class="indexask-ques" href="{%url 'question_create' %}" style="color:blue;">Ask Question</a>
 <!--            <a   class="ask-ques"  href="{% url 'question_create' %}">Ask Question </a>-->
         </div>
+      {%block part-title %}  {%endblock%}
       <ul class='cate-list'>
         {%block ls %}
 
@@ -31,18 +58,20 @@
 
           {%endblock%}
       </ul>
-        <hr style="background-color:white;">
+        <hr style="background-color:white; margin-top:0;">
 
       <ul class='ques-list'>
           {%for question in questions %}
               <li>
                   <a class='ques-box' href="{%url 'question_detail' question.slug %}">
-                      <div class="ques-vl" id="vote">{{question.upvotes.count}} votes</div>
-                      <div class="ques-vl" id='answer'>{{question.answer_set.count}} answers</div>
-                      <div class="ques-vl" id='asked-date'>{{question.created}}</div>
-                      <div style="color:black; font-weight:bold; margin-bottom:0; padding-bottom:0;" class="ques">{{question.title|linebreaks}}</div>
+                      <div  class="ques-vl" id="vote">{{question.upvotes.count}} votes</div>
+                      <div  class="ques-vl" id='answer'>{{question.answer_set.count}} answers</div>
+                      <div style="margin-left:17px;" class="ques-vl" id='asked-date'>{{question.created}}</div>
+                      <div style="font-weight:bold; margin-bottom:0;color:black;" class="ques">
+                          {{question.title|linebreaks}}
+                      </div>
                       {% if question.image_set.all.count > 0 %}
-                      <button style="margin-top:0;background:lightblue;font-size:15px">Image <i class="material-icons" style="color:blue;">filter</i></button>
+                        <button style="padding-top:0;margin-top:0;background:lightblue;font-size:15px">Image <i class="material-icons" style="color:blue; margin-top:0">filter</i></button>
                       {% endif %}
                   </a>
                    <div class="btm-sec">
@@ -55,11 +84,11 @@
                            {% endif %}
                           <a href="{%url 'part_questions' question.subject.slug %}">{{question.subject.name}}</a>
                       </div>
-                       <div class="btm-sec-r">
+                       <div ylste="text-align:center;" class="btm-sec-r">
 <!--                           <img class = 'rounded-circle' style="height: 65px;  width: 65px;  margin-right: 16px;"-->
 <!--                                 src="{{ question.user.profile.image.url }}">-->
-                            <a href="{% url 'profile' question.user %}">
-                                <img style="text-align:center;height:40px;display:block;width:auto;" src='{{question.user.profile.image.url}}' class="profile-img" alt="PP">
+                            <a style="text-align:center;" href="{% url 'profile' question.user %}">
+                                <img style="height:40px;display:block;width:auto;" src='{{question.user.profile.image.url}}' class="profile-img" alt="PP">
                                 <div style="text-align:center;color:black;dispaly:block;font-weight:bold;">
                                     {{question.user.first_name}} {{question.user.last_name}}
                                 </div>

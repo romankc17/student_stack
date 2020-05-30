@@ -11,7 +11,7 @@
         <div >
             <img src='{{profile.image.url}}' class="profile-img" alt="PP">
             {% if profile.user == user %}
-                <a href="#" style="margin-bottom:4px; padding:3px 30px;" class="btn btn-primary">Edit</a>
+                <a href="{%url 'profile_update'%}" style="margin-bottom:4px; padding:3px 30px;" class="btn btn-primary">Edit</a>
             {%endif%}
         </div>
         <div class='basic-info'>
@@ -37,7 +37,7 @@
 
     <div style="padding-top:3px;" class="right-block">
         {% if profile.user == user %}
-         <button style="margin-top:0px; padding:0 8px; float:right;" type="button" class="btn btn-lg btn-primary">Update Info</button>
+<!--         <button style="margin-top:0px; padding:0 8px; float:right;" type="button" class="btn btn-lg btn-primary">Update Info</button>-->
         {%endif%}
         <div style="margin-top:25px;"><span id='title'>Name</span> <span id='inf'>{{profile.user.first_name}} {{profile.user.last_name}}</span></div>
         <div><span id='title'>Faculty</span> <span id='inf'>{{profile.faculty}}</span></div>

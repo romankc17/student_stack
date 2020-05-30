@@ -41,7 +41,10 @@
                     {%endif%}
                 </div>
             </div>
-            <a style="margin-top:2px; margin-left:4px; color:black; font-weight:bold; font-size:20px;" href='{%url "index" %}'>QnA</a>
+            <a style="margin-top:2px; margin-left:1px; color:black; font-weight:bold; font-size:20px;" href='{%url "index" %}'>
+<!--                <img style="height:100px; width:auto;" src="" alt="QnA">-->
+                QnA
+            </a>
 <!--            <a href="#" class="home-btn"><i class="fa fa-home"></i> </a>-->
         </div>
 
@@ -49,8 +52,8 @@
             <!-- <a href="#" class="my-ques">My Questions</a>
             <a href="#" class="my-ans">My Answers</a> -->
             <input style="background:lightyellow; border-style:groove; " class='search-box' type="text" placeholder="Search.." name="search">
-            <button style=" background:blue; border:20px soid red;"  type="submit">
-                <i style="color:black;" class="search-btn fa fa-search"></i>
+            <button style=" background:#0275d8; border:20px soid red; border-radius:5px;"  type="submit">
+                <i  class="search-btn fa fa-search"></i>
             </button>
         </form>
         <a class="navask-ques" href="{% url 'question_create' %}">

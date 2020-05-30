@@ -22,7 +22,7 @@ def home_page(request):
     }
     return render(request, 'index.html', context)
 
-
+@login_required
 def question_create_view(request):
     ImageFormSet = modelformset_factory(Image,
                                         fields=('image',),
@@ -56,13 +56,6 @@ def question_create_view(request):
 
 
 
-# Question Update View
-
-
-
-
-
-
 def question_answers(request, slug):
 
     ImageFormSet = modelformset_factory(Image,
@@ -70,7 +63,9 @@ def question_answers(request, slug):
                                         extra=3)
     question = Question.objects.get(slug = slug)
 
-    if request.method == 'POST':
+    if request.method == 'POST' :
+        if request.user.is_authenticated == False:
+            return redirect('login')
         answer_form = AnswerForm(request.POST)
         formset = ImageFormSet(request.POST,
                                request.FILES,
@@ -131,14 +126,14 @@ class AnswerDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         return reverse_lazy('question_detail', kwargs={'slug': self.object.question.slug})
 
-
+@login_required
 def question_update_view(request, slug):
-    ImageFormSet = modelformset_factory(Image,
-                                        fields=('image',),
-                                        max_num=1)
     question = get_object_or_404(Question, slug=slug)
     if question.user != request.user:
         raise Http404()
+    ImageFormSet = modelformset_factory(Image,
+                                        fields=('image',),
+                                        max_num=1)
     if request.method == 'POST':
         qform = QuestionCreateForm(request.POST, instance=question)
         formset = ImageFormSet(request.POST or None,
@@ -184,12 +179,16 @@ def question_update_view(request, slug):
     return render(request, 'posts/question_create.html', context)
 
 
-
+@login_required
 def answer_update(request, pk):
+    answer = Answer.objects.get(id=pk)
+    if request.user!=answer.user:
+        raise Http404("You cannot update other's answer!!")
+
     ImageFormSet = modelformset_factory(Image,
                                         fields=('image',),
                                         extra=3,max_num=3)
-    answer = Answer.objects.get(id=pk)
+
     question = answer.question
 
     if request.method == 'POST':

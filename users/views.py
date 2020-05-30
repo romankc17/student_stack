@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required  #required signin to view profile 
 from django.contrib import messages #display some temporary message
@@ -44,26 +44,26 @@ def register(request):
 #profile page
 @login_required # (decorators) login required if not redirected to login page
 def profile(request):
+	user = request.user
 	if request.method=='POST':
-		u_form = UserUpdateForm(request.POST, instance = request.user) 
+		u_form = UserUpdateForm(request.POST, instance = user)
 		 #request post data and populate the form with updated user
 
-		p_form = ProfileUpdateForm(request.POST, #request post data
+		p_form = ProfileForm(request.POST, #request post data
 								    request.FILES, #request image file uploaded by users
-								    instance = request.user.profile) # populate the form with updated profile
+								    instance = user.profile) # populate the form with updated profile
 
 		if u_form.is_valid() and p_form.is_valid():
 			u_form.save()
 			p_form.save()
 			messages.success(request, f'Your account has been updated!!')
 			#popup temporary message
-			return redirect('profile')
+			return redirect('profile',username=user)
 
 
 	else:
-		current_user = User.objects.get(username=request.user)
-		u_form = UserUpdateForm(instance = request.user) #populate the form with current user
-		p_form = ProfileUpdateForm(instance = request.user.profile) #populate the form with current profile
+		u_form = UserUpdateForm(instance = user) #populate the form with current user
+		p_form = ProfileForm(instance = user.profile) #populate the form with current profile
 
 
 	context = {
@@ -82,3 +82,12 @@ def profile_view(request, username):
 		'profile': get_object_or_404 (Profile, user=User.objects.get(username=username))
 	}
 	return render(request, 'users/profile.html', context)
+
+@login_required
+def profile_update_view(request, user_):
+	if request.user != user_:
+		raise Http404()
+
+
+
+

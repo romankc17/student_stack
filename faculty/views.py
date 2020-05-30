@@ -6,7 +6,6 @@ from django.views.generic import ListView
 from .models import Category,Batch,Subject
 from posts.models import Question
 
-
 class CategoriesList(ListView):
     model = Category
     context_object_name = 'categories'
@@ -15,6 +14,7 @@ def subjects_view(request, category, batch):
     subjects = Subject.objects.filter(category=Category.objects.get(slug=category), batch=Batch.objects.get(batch=batch))
     context={'subjects':subjects}
     return render(request, 'faculty/subjects.html', context)
+
 
 def part_cate_or_sub_ques(request, slug):
     try:
@@ -45,8 +45,6 @@ def part_cate_or_sub_ques(request, slug):
 
 
     return render(request, 'faculty/part-questions.html', context)
-
-
 
 
 def part_batch_ques(request, cate_slug, batch_slug):
