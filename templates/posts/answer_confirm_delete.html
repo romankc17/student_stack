@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class='content-section container'>
+  <form method='POST'>
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Delete Answer</legend>
+      <h2>Are you sure you want to delete answer</h2>
+       <div style="font-weight:bold; color:red;">" {{object.title}} "</div>
+    </fieldset>
+    <div class='form-group'>
+   <button class='btm btn-outline-danger' type="submit">Yes,Delete</button>
+   <a  class='btm btn-outline-secondary' href="{% url 'question_detail' object.question.slug %}" >Cancel</a>
+    </div>
+  </form>
+
+
+
+{% endblock %}

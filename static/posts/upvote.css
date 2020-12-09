@@ -1,0 +1,65 @@
+@import "compass/css3";
+
+@import "compass/css3/border-radius";
+@import "compass/css3/transition";
+$radius: 3px;
+$width: 300px;
+$height: 60px;
+
+.wrap{
+  width: $width;
+  min-width: 250px;
+  height: $height;
+  margin: 50px auto;
+  position: relative;
+  display:table;
+
+  .votes{
+    @include border-radius($radius 0 0 $radius);
+    display:table-cell;
+    min-width: 50px;
+    min-height: $height;
+    background: #2980b9;
+    text-align: center;
+    color: #fff;
+    line-height: $height;
+    font-weight: 700;
+  }
+
+  .button{
+    @include transition(0.3s);
+    @include border-radius(0 $radius $radius 0);
+    display:table-cell;
+    text-align: center;
+    color: #fff;
+    line-height: $height;
+    min-height: $height;
+    background: #3498db;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    border-left: 1px solid #3498db;
+
+    i{
+      @include transition(0.3s);
+      transition: all 800ms cubic-bezier(1.000, 0.000, 0.000, 1.000);
+      transition-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+      margin: 0 10px 0 0;
+    }
+
+    &:hover{
+      background: #2980b9;
+
+      i{
+        @include transition(0.3s);
+        transform: rotate(-90deg);
+        transition: all 800ms cubic-bezier(1.000, 0.000, 0.000, 1.000);
+        transition-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+      }
+    }
+  }
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+}

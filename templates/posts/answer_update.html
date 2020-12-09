@@ -1,0 +1,39 @@
+{%extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{%block head %}
+    <title>Question_Answers</title>
+    <style>
+        #id_title{
+            width:100%;
+            border-radius:10px;
+        }
+    </style>
+{%endblock%}
+
+{%block content%}
+
+
+<div style="background-color:lightgreen; border: 2px solid ; border-radius:15px; margin-bottom:20px; padding:10px;">
+        <h3>Your Answer:</h3>
+    <!--                Answer form-->
+
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style="position; width:90%;  border-radius: 7px;">{{answer_form.title|attr:'placeholder:Write the answer....'}}</div>
+                <div style="font-weight: bold;"> <span style="background:yellow; padding:2px 4px">Upload image file</span>(optional)</div>
+                <div>
+                    {{ formset.management_form }}
+                    {%for form in formset %}
+                        {{form.id}}
+                        {{form.image}}
+                    {% endfor %}
+                </div>
+
+                <input style="margin:5px 0;" class="btn btn-lg btn-primary" type="submit" value="Post Your Answer">
+            </form>
+    </div>
+</div>
+
+{% endblock %}

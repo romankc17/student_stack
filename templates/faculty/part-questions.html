@@ -1,0 +1,24 @@
+{%extends 'index.html' %}
+
+
+
+{%block ls %}
+<div  class="cate-list cate-middle scrollmenu text-nowrap">
+
+
+    {%if batch_subjects%}
+        {%for b_sub in batch_subjects %}
+          <a style="display:inline; " href="{%url 'part_questions' b_sub.slug %}"> <li>{{b_sub}}</li> </a>
+        {% endfor %}
+    {%elif category and c%}
+        <span style="margin:0 10px;background:red;font-weight:bold;color:white;padding:0 4px;padding-top:10px;">
+            {{category.get_seasons_display}}s
+        </span>
+        {%for c_batch in category.batches.all %}
+          <a href="{%url 'part_batch_ques' cate_slug=category.slug batch_slug=c_batch.slug %}">
+              <li>{{c_batch}}</li>
+          </a>
+        {% endfor %}
+    {%endif%}
+</div>
+{%endblock%}

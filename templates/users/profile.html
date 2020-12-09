@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-block">
+    <div style="" class="left-block">
+        <div >
+            <img src='{{profile.image.url}}' class="profile-img" alt="PP">
+            {% if profile.user == user %}
+                <a href="{%url 'profile_update'%}" style="margin-bottom:4px; padding:3px 30px;" class="btn btn-primary">Edit</a>
+            {%endif%}
+        </div>
+        <div class='basic-info'>
+            <div id='name'>{{profile.user.first_name}} {{profile.user.last_name}}</div>
+             <hr style="height:  0.2px; padding: 0; margin: 0;">
+            <div>Student </div>
+            <hr style="height:  0.2px; padding: 0; margin: 0;">
+            <div>{{profile.college}}</div>
+            <div style='display:flex; justify-content: space-around; margin-top: 80px;' class="askorans">
+
+                <button type="button" class="btn btn-primary" style="padding:7px 20px; margin-right:2px;">
+                    Asked<span style="margin-left:3px;" class="badge badge-light">9</span>
+                </button>
+
+                <button type="button" class="btn btn-primary" style="padding:7px 20px; margin-right:2px;">
+                    Answered<span style="margin-left:3px;" class="badge badge-light">9</span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <hr style="height:  0.2px; padding: 0; margin: 0;">
+
+    <div style="padding-top:3px;" class="right-block">
+        {% if profile.user == user %}
+<!--         <button style="margin-top:0px; padding:0 8px; float:right;" type="button" class="btn btn-lg btn-primary">Update Info</button>-->
+        {%endif%}
+        <div style="margin-top:25px;"><span id='title'>Name</span> <span id='inf'>{{profile.user.first_name}} {{profile.user.last_name}}</span></div>
+        <div><span id='title'>Faculty</span> <span id='inf'>{{profile.faculty}}</span></div>
+        {% if  profile.faculty.get_seasons_display != '' %}
+            <div><span id='title'>Level</span> <span id='inf'>{{profile.faculty.get_seasons_display}} : {{profile.batch}} </span></div>
+        {%endif%}
+        <div><span id='title'>Email</span> <span id='inf'>{{profile.user.email}}</span></div>
+        <div ><span id='title'>Gender</span> <span id='inf'>{{profile.get_gender_display}}</span></div>
+
+    </div>
+
+</div>
+
+{%endblock%}

@@ -1,0 +1,80 @@
+
+.q-top .ask-ques:hover{
+    color:white;
+}
+
+.each-ques{
+    border-bottom: .5px solid #777;
+    padding:15px;
+}
+
+
+.ques-box:hover .each-ques{
+    background:red;
+}
+
+
+.ques-box .ques{
+    font-size: bold;
+}
+
+
+.ques-list .ques-vl{
+    display:inline;
+    padding: 2px 7px;
+    color:black;
+    border-style:groove;
+}
+
+
+
+.ques-list .ques{
+    padding: 7px 0px;
+}
+
+.ques-box #asked-date{
+    background-color: rgba(11, 11, 92, 0.425);
+}
+
+
+
+.btm-sec{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.btm-sec .btm-sec-l a{
+    display: inline-block;
+    background-color:black;
+    padding: 2px 5px;
+    margin-top:5px;
+}
+
+.btm-sec  a:hover{
+    background-color: rgba(11, 11, 92, 0.425);
+    color:white;
+}
+
+
+
+@media only screen and (min-width: 650px) {
+  .mainbar {
+    /* margin: 2px 0%; */
+    margin-right: 2px;
+  }
+
+}
+
+
+
+
+@media only screen and (max-width: 320px) {
+  .sidebar{
+      background:red;
+  }
+
+}
+
+

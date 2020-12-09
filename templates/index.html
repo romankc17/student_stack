@@ -1,0 +1,96 @@
+{%extends 'base.html'%} {% load static %} {%block head%}
+<title>home</title>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" type="text/css" href="{% static 'posts/home.css' %}" />
+
+{%endblock%} 
+
+{%block content%}
+
+      {%block ls %}
+      {%endblock%}
+
+    <div  class="ques-list">
+      {%for question in questions %}
+      <div class="each-ques">
+        <a class="ques-box" href="{%url 'question_detail' question.slug %}">
+          <div class="ques-vl" id="vote">{{question.upvotes.count}} votes</div>
+          <div class="ques-vl" id="answer">
+            {{question.answer_set.count}} answers
+          </div>
+          <div style="margin-left: 17px;" class="ques-vl" id="asked-date">
+            {{question.created}}
+          </div>
+          <div
+            style="font-weight: bold; margin-bottom: 0; color: black;"
+            class="ques"
+          >
+            {{question.title|linebreaks}}
+          </div>
+          {% if question.image_set.all.count > 0 %}
+          <button
+            style="
+              padding-top: 0;
+              margin-top: 0;
+              background: lightblue;
+              font-size: 15px;
+            "
+          >
+            Image
+            <i class="material-icons" style="color: blue; margin-top: 0;"
+              >filter</i
+            >
+          </button>
+          {% endif %}
+        </a>
+        <div class="btm-sec">
+          <div class="btm-sec-l">
+            <a href="{%url 'part_questions' question.category.slug %}">
+              {{question.category.faculty}}</a
+            >
+            {% if question.category.get_seasons_display != '' %}
+            <a
+              href="{%url 'part_batch_ques' cate_slug=question.category.slug batch_slug=question.batch.slug %}"
+            >
+              {{question.category.get_seasons_display}}:{{question.batch}}
+            </a>
+            {% endif %}
+            <a href="{%url 'part_questions' question.subject.slug %}"
+              >{{question.subject.name}}</a
+            >
+          </div>
+          <div ylste="text-align:center;" class="btm-sec-r">
+            <!--                           <img class = 'rounded-circle' style="height: 65px;  width: 65px;  margin-right: 16px;"-->
+            <!--                                 src="{{ question.user.profile.image.url }}">-->
+            <a
+              style="text-align: center;"
+              href="{% url 'profile' question.user %}"
+            >
+              <img
+                style="height: 40px; display: block; width: auto;"
+                src="{{question.user.profile.image.url}}"
+                class="profile-img"
+                alt="PP"
+              />
+              <div
+                style="
+                  text-align: center;
+                  color: black;
+                  dispaly: block;
+                  font-weight: bold;
+                "
+              >
+                {{question.user.first_name}} {{question.user.last_name}}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>  
+      {%endfor%}
+    </div>
+  </div>
+
+{%endblock%}

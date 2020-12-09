@@ -1,0 +1,9 @@
+<div class='cate-list scrollmenu text-nowrap'>
+        {%block ls %}
+
+            {%for category in categories %}
+              <a  href="{%url 'part_questions' category.slug %}"> <li>{{category.faculty}}</li> </a>
+            {% endfor %}
+
+          {%endblock%}
+      </div>

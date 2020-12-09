@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="731cb300-c7de-4deb-82aa-760d3cc79293" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/institute/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/.idea/institute.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/migrations/0002_auto_20200415_2142.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/migrations/0003_auto_20200415_2143.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/migrations/0004_auto_20200416_1138.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/migrations/0005_batch_slug.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/faculty/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/institute/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/institute/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/institute/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/institute/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/institute/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/media/profile_pics/passport_size.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/ajax.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/migrations/0002_auto_20200518_2016.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/migrations/0003_auto_20200519_1501.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/migrations/0004_auto_20200522_2233.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/posts/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/boy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/css/nav.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/drop-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/faculty/css/faculty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/posts/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/posts/image_modal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/posts/upvote.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/21880c0ffe15753a53f8402e9f64e1077e071510/style.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/2af427b2894d1e78c5806e231aa35d00838a84e0/style.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/5b5e4638a1b65395d974dddfa3d03b7a86b84808/extend.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/5b5e4638a1b65395d974dddfa3d03b7a86b84808/fonts.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/5b5e4638a1b65395d974dddfa3d03b7a86b84808/global.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/5b5e4638a1b65395d974dddfa3d03b7a86b84808/minxi.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/5b5e4638a1b65395d974dddfa3d03b7a86b84808/variables.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/632f5d1dd893d2e8764de51b8ca4120e25043113/extend.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/632f5d1dd893d2e8764de51b8ca4120e25043113/fonts.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/632f5d1dd893d2e8764de51b8ca4120e25043113/global.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/632f5d1dd893d2e8764de51b8ca4120e25043113/minxi.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/632f5d1dd893d2e8764de51b8ca4120e25043113/variables.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/643489b018602f15119d8f44aeb7fc79468873a9/main.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/643489b018602f15119d8f44aeb7fc79468873a9/responsive.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39/extend.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39/fonts.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39/global.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39/minxi.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39/variables.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/8d060da290f1e90ae74e56e843d8749396294ac1/main.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/8d060da290f1e90ae74e56e843d8749396294ac1/responsive.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/e17f2ac53a8b63135158793a481cf8f239449aec/style.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/f49285f1317a1cafa93ab4f5de346f92bbc40d58/main.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/.sass-cache/f49285f1317a1cafa93ab4f5de346f92bbc40d58/responsive.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/css/style.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/material-icon/css/material-design-iconic-font.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/material-icon/css/material-design-iconic-font.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/material-icon/fonts/Material-Design-Iconic-Font.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/material-icon/fonts/Material-Design-Iconic-Font.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/material-icon/fonts/Material-Design-Iconic-Font.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/material-icon/fonts/Material-Design-Iconic-Font.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/material-icon/fonts/Material-Design-Iconic-Font.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/Montserrat-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/montserrat-v12-latin-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/montserrat-v12-latin-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/montserrat-v12-latin-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/montserrat-v12-latin-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/montserrat/montserrat-v12-latin-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300italic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-300italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500italic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-500italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-600.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-600.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-600.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-600.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-600.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700italic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-700italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800italic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-800italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-italic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/poppins-v5-latin-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700italic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-700italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-italic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/fonts/poppins/roboto-condensed-v16-latin-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/images/signup-img.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/common/extend.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/common/fonts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/common/global.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/common/minxi.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/common/variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/layouts/main.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/layouts/responsive.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/scss/style.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/vendor/jquery/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/register/vendor/jquery/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/unknown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/static/users/css/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/logout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/password_reset.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/password_reset_complete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/password_reset_confirm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/password_reset_done.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/entrance/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/faculty/batch_dropdown_list_options.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/faculty/category_list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/faculty/part-questions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/faculty/subject_dropdown_list_options.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/faculty/subjects.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/posts/answer_confirm_delete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/posts/answer_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/posts/answer_update.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/posts/question_confirm_delete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/posts/question_create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/posts/question_detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/templates/users/profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/0002_profile_gender.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/0003_auto_20200417_0855.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/0004_auto_20200418_1231.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/0005_auto_20200519_1954.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/0006_auto_20200519_2046.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/0007_auto_20200809_1753.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/institute/users/views.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/institute" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/romankc17/problem_discussion" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Wpm6FSJ1y6OO9w2STuih2z3i30" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\roman\OneDrive\Desktop\myProject\institute\static\posts" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.myProject">
+    <configuration name="myProject" type="PythonConfigurationType" factoryName="Python">
+      <module name="oet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\roman\OneDrive\Desktop\myProject\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="D:/PycharmProjects/automation" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:/PycharmProjects/automation/oet" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="oet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/PycharmProjects/automation/oet" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:/PycharmProjects/automation/oet/oet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scrape_result" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\roman\Desktop\Python\automation\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="D:/PycharmProjects/automation/oet" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:/PycharmProjects/automation/oet/scrape_result.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="send_mail" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/PycharmProjects/automation/oet" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:/PycharmProjects/automation/oet/send_mail.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="send_mail_img" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/PycharmProjects/automation/oet" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:/PycharmProjects/automation/oet/send_mail_img.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.myProject" />
+      <item itemvalue="Python.oet" />
+      <item itemvalue="Python.scrape_result" />
+      <item itemvalue="Python.send_mail" />
+      <item itemvalue="Python.send_mail_img" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.send_mail_img" />
+        <item itemvalue="Python.oet" />
+        <item itemvalue="Python.scrape_result" />
+        <item itemvalue="Python.send_mail" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="731cb300-c7de-4deb-82aa-760d3cc79293" name="Default Changelist" comment="" />
+      <created>1579854732669</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579854732669</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="922" y="160" key="SettingsEditor" timestamp="1601970007233">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="922" y="160" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601970007233" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/institute/posts/forms.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

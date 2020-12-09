@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://D:/PycharmProjects/HelloWorld/.idea/HelloWorld.iml" filepath="D:/PycharmProjects/HelloWorld/.idea/HelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/myProject.iml" filepath="$PROJECT_DIR$/.idea/myProject.iml" />
+      <module fileurl="file://D:/PycharmProjects/automation/oet/.idea/oet.iml" filepath="D:/PycharmProjects/automation/oet/.idea/oet.iml" />
+    </modules>
+  </component>
+</project>
